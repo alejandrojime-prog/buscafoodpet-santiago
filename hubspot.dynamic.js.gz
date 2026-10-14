@@ -1,0 +1,382 @@
+window['hubspotDeps'] = ["/integrations/vendor/commons.1b78f84a8c1751144d06.js"];window['hubspotLoader'] = function() { return window["hubspotIntegration"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"hubspot": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp_name_Integration"] = window["webpackJsonp_name_Integration"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push(["Knah","commons"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "Knah":
+/*!*******************************************!*\
+  !*** ./integrations/hubspot/lib/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Module dependencies.
+ */
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var Identify = __webpack_require__(/*! segmentio-facade */ "NGGi").Identify;
+
+var convert = __webpack_require__(/*! @segment/convert-dates */ "OO3c");
+
+var integration = __webpack_require__(/*! @segment/analytics.js-integration */ "hjHq");
+
+var push = __webpack_require__(/*! global-queue */ "5mDK")('_hsq');
+
+var each = __webpack_require__(/*! @ndhoule/each */ "6YGp");
+/**
+ * Expose `HubSpot` integration.
+ */
+
+
+var HubSpot = module.exports = integration('HubSpot').assumesPageview().global('_hsq').global('hbspt').option('portalId', null).option('loadFormsSdk', false).option('enableEuropeanDataCenter', false).tag('global-tag', '<script id="hs-analytics" src="https://js.hs-analytics.net/analytics/{{ cacheBuster }}/{{ portalId }}.js">').tag('eu-tag', '<script id="hs-analytics" src="https://js-eu1.hs-analytics.net/analytics/{{ cacheBuster }}/{{ portalId }}.js">').tag('forms', '<script src="//js.hsforms.net/forms/shell.js">');
+/**
+ * Initialize.
+ *
+ * @api public
+ */
+
+HubSpot.prototype.initialize = function () {
+  window._hsq = window._hsq || [];
+  var cacheBuster = Math.ceil(new Date() / 300000) * 300000;
+  var shouldLoadLeadForms = this.options.loadFormsSdk;
+  var self = this;
+  var tagName = this.options.enableEuropeanDataCenter ? 'eu-tag' : 'global-tag';
+
+  if (shouldLoadLeadForms) {
+    this.load('forms', function () {
+      self.load(tagName, {
+        cacheBuster: cacheBuster
+      }, self.ready);
+    });
+  } else {
+    this.load(tagName, {
+      cacheBuster: cacheBuster
+    }, this.ready);
+  }
+};
+/**
+ * Loaded?
+ *
+ * @api private
+ * @return {boolean}
+ */
+
+
+HubSpot.prototype.loaded = function () {
+  var libLoaded = !!(window._hsq && window._hsq.push !== Array.prototype.push); // Due to limitations with our testing framework, we cannot test more than a single script loading configuration.
+  // Therefore, we are ignoring this conditional in code coverage.
+
+  /* istanbul ignore if */
+
+  if (!this.options.loadFormsSdk) {
+    return libLoaded;
+  }
+
+  return libLoaded && !!(window.hbspt && window.hbspt.forms);
+};
+/**
+ * Trims whitespace and invisible characters from a string.
+ *
+ * @param {string} str - The string to trim.
+ * @returns {string} - The trimmed string.
+ */
+
+
+function trimWhitespaceAndInvisibleChars(str) {
+  // This regular expression matches leading and trailing whitespace characters,
+  // as well as invisible characters such as zero-width spaces and non-breaking spaces.
+  return str.replace(/^[\s\u200B-\u200D\uFEFF]+|[\s\u200B-\u200D\uFEFF]+$/g, '');
+}
+/**
+ * Recursively sanitizes the values of an object or array by trimming whitespace
+ * and invisible characters from string values, and preserving the structure of
+ * functions, arrays, and nested objects.
+ *
+ * @param {Object|Array} msg - The object or array to sanitize.
+ * @returns {Object|Array} - The sanitized object or array.
+ */
+
+
+function sanitizeValue(msg) {
+  if (_typeof(msg) === 'object' && msg !== null) {
+    Object.keys(msg).forEach(function (key) {
+      var value = msg[key];
+
+      if (typeof value === 'string') {
+        msg[key] = trimWhitespaceAndInvisibleChars(value);
+      } else if (Array.isArray(value)) {
+        msg[key] = value.map(sanitizeValue);
+      } else if (_typeof(value) === 'object') {
+        msg[key] = sanitizeValue(value);
+      }
+    });
+  }
+
+  return msg;
+}
+/**
+ * Page.
+ *
+ * @api public
+ * @param {Page} page
+ */
+
+
+HubSpot.prototype.page = function () {
+  push('trackPageView');
+};
+/**
+ * Identify.
+ *
+ * @api public
+ * @param {Identify} identify
+ */
+
+
+HubSpot.prototype.identify = function (identify) {
+  sanitizeValue(identify); // use newer version of Identify to have access to `companyName`
+
+  var newIdentify = new Identify({
+    traits: identify.traits(),
+    userId: identify.userId()
+  });
+
+  if (!newIdentify.email()) {
+    return;
+  }
+
+  var traits = newIdentify.traits({
+    firstName: 'firstname',
+    lastName: 'lastname'
+  });
+  traits = convertDates(traits);
+  traits = formatTraits(traits);
+
+  if (newIdentify.companyName() !== undefined) {
+    traits.company = newIdentify.companyName();
+  }
+
+  push('identify', traits);
+};
+/**
+ * Track.
+ *
+ * @api public
+ * @param {Track} track
+ */
+
+
+HubSpot.prototype.track = function (track) {
+  sanitizeValue(track); // Hubspot expects properties.id to be the name of the .track() event
+  // Ref: http://developers.hubspot.com/docs/methods/enterprise_events/javascript_api
+
+  var props = convertDates(track.properties({
+    id: '_id',
+    revenue: 'value'
+  }));
+  props.id = track.event();
+  push('trackEvent', track.event(), props);
+};
+/**
+ * Convert all the dates in the HubSpot properties to millisecond times
+ *
+ * @api private
+ * @param {Object} properties
+ */
+
+
+function convertDates(properties) {
+  return convert(properties, function (date) {
+    return date.getTime();
+  });
+}
+/**
+ * lowercase & snakecase any trait with uppercase letters or spaces
+ * Hubspot cannot accept uppercases or spaces
+ *
+ * @api private
+ * @param {Object} traits
+ * @return {Object} ret
+ */
+
+
+function formatTraits(traits) {
+  var ret = {};
+  each(function (value, key) {
+    // Using split/join due to IE 11 failing to properly support regex in str.replace()
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/@@replace
+    var k = key.toLowerCase().split(' ').join('_') // spaces
+    .split('.').join('_') // Periods
+    .split('\n').join('_') // new lines
+    .split('\v').join('_') // Vertical tabs
+    .split('\t').join('_') // Regular tabs
+    .split('\f').join('_') // form feeds
+    .split('\r').join('_'); // Carriage returns
+
+    ret[k] = value;
+  }, traits);
+  return ret;
+}
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=hubspot.js.map
+};
